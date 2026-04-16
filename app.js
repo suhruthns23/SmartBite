@@ -1,48 +1,44 @@
-const recipes = [
-  {
-    title: "Egg Fried Rice",
-    ingredients: ["egg", "rice", "onion"],
-    steps: ["Boil rice", "Fry egg", "Mix everything"]
-  },
-  {
-    title: "Tomato Omelette",
-    ingredients: ["egg", "tomato"],
-    steps: ["Beat egg", "Add tomato", "Fry"]
-  },
-  {
-    title: "Simple Rice Bowl",
-    ingredients: ["rice"],
-    steps: ["Cook rice", "Serve hot"]
+async function findRecipes() {
+  const input = document.getElementById("ingredientsInput").value;
+  if (!input) {
+    alert("Please enter ingredients!");
+    return;
   }
-];
 
-function findRecipes() {
-  const input = document.getElementById("ingredientsInput").value.toLowerCase();
-  const userIngredients = input.split(",").map(i => i.trim());
+  // Show loading animation
+  document.getElementById("loading").style.display = "block";
+  document.getElementById("results").innerHTML = "";
 
-  const results = recipes.filter(recipe =>
-    recipe.ingredients.some(ing => userIngredients.includes(ing))
-  );
+  try {
+    // Call Spoonacular API with your key
+    const response = await fetch(
+      `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${encodeURIComponent(input)}&number=10&ranking=1&apiKey=67b40b86de8e475c8781175d2d1ac44a`
+    );
+    const data = await response.json();
 
-  displayResults(results);
+    displayResults(data);
+  } catch (err) {
+    document.getElementById("results").innerHTML = "<p>Error fetching recipes 😕</p>";
+  } finally {
+    document.getElementById("loading").style.display = "none";
+  }
 }
 
-function displayResults(results) {
+function displayResults(recipes) {
   const container = document.getElementById("results");
   container.innerHTML = "";
 
-  if (results.length === 0) {
+  if (!recipes || recipes.length === 0) {
     container.innerHTML = "<p>No recipes found 😕</p>";
     return;
   }
 
-  results.forEach(r => {
+  recipes.forEach(r => {
     const div = document.createElement("div");
     div.className = "card";
     div.innerHTML = `
       <h3>${r.title}</h3>
-      <p><b>Ingredients:</b> ${r.ingredients.join(", ")}</p>
-      <p><b>Steps:</b> ${r.steps.join(" → ")}</p>
+      <img src="${r.image}" alt="${r.title}" style="width:100%;border-radius:8px;">
     `;
     container.appendChild(div);
   });
