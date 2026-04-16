@@ -18,8 +18,8 @@
 }
 
 /* Dynamic section inputs/buttons */
-.dynamicSection input,
-.dynamicSection button {
+#dynamicSection input,
+#dynamicSection button {
   margin: 10px 0;
 }
 
