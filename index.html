@@ -1,1 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartBite</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+  <div class="app">
+
+    <!-- Header -->
+    <header class="header">
+      <h1>🍳 SmartBite</h1>
+      <p>Cook smart with what you have</p>
+    </header>
+
+    <!-- Input Section -->
+    <section class="input-section">
+      <input type="text" id="ingredientsInput" placeholder="Enter ingredients (e.g. egg, rice)">
+      <button onclick="findRecipes()">Find Recipes</button>
+    </section>
+
+    <!-- Results -->
+    <section class="results" id="results">
+      <p class="hint">Your recipes will appear here...</p>
+    </section>
+
+    <!-- Bottom Nav -->
+    <nav class="bottom-nav">
+      <div>🏠</div>
+      <div>🔍</div>
+      <div>➕</div>
+      <div>❤️</div>
+      <div>👤</div>
+    </nav>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
