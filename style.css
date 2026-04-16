@@ -1,68 +1,25 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #eaeaea;
-  display: flex;
-  justify-content: center;
-}
-
-.app {
-  width: 100%;
-  max-width: 420px;
-  height: 100vh;
-  background: white;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-}
-
-/* Home */
-.home {
+.choice {
   text-align: center;
-  padding: 20px;
-}
-
-.logo {
-  width: 200px;
-  height: auto;
-  margin-top: 30px;
-}
-
-.app-name {
-  font-size: 28px;
-  color: #ff7043;
-  margin: 10px 0 5px;
-}
-
-.tagline {
-  color: #555;
-  margin-bottom: 20px;
-}
-
-/* Input */
-.input-section {
+  margin: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 0 20px;
 }
 
-.input-section input {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
-
-.input-section button {
+.choice button {
   padding: 12px;
   border: none;
   background: #ff7043;
   color: white;
   border-radius: 8px;
   cursor: pointer;
+  font-size: 16px;
 }
 
-/* Loading */
+.dynamicSection input, .dynamicSection button {
+  margin: 10px 0;
+}
+
 .loading {
   text-align: center;
   padding: 20px;
@@ -78,23 +35,4 @@ body {
 }
 @keyframes spin {
   100% { transform: rotate(360deg); }
-}
-
-/* Results */
-.results {
-  flex: 1;
-  padding: 15px;
-  overflow-y: auto;
-}
-.hint {
-  color: gray;
-  text-align: center;
-  margin-top: 50px;
-}
-.card {
-  background: #fff3ef;
-  padding: 12px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
