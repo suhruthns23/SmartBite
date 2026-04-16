@@ -10,26 +10,30 @@
 <body>
   <div class="app">
 
-    <!-- Home Section -->
-    <section class="home">
+    <!-- Logo + Title -->
+    <header class="header">
       <img src="logo.png" alt="SmartBite Logo" class="logo">
       <h1 class="app-name">SmartBite</h1>
       <p class="tagline">Cook smart with what you have</p>
+    </header>
 
-      <form class="input-section" onsubmit="findRecipes(); return false;">
-        <input type="text" id="ingredientsInput" placeholder="Enter ingredients (e.g. tomato, rice)">
-        <button type="submit">Find Recipes</button>
-      </form>
-
-      <div id="loading" class="loading" style="display:none;">
-        <div class="spinner"></div>
-        <p>Finding recipes...</p>
-      </div>
-
-      <section class="results" id="results">
-        <div class="hint">Your recipes will appear here...</div>
-      </section>
+    <!-- Choice Section -->
+    <section class="choice">
+      <button onclick="chooseSearch('name')">Search by Recipe Name</button>
+      <button onclick="chooseSearch('ingredients')">Search by Ingredients</button>
     </section>
+
+    <!-- Dynamic Section -->
+    <section id="dynamicSection"></section>
+
+    <!-- Loading -->
+    <div id="loading" class="loading" style="display:none;">
+      <div class="spinner"></div>
+      <p>Finding recipes...</p>
+    </div>
+
+    <!-- Results -->
+    <section class="results" id="results"></section>
 
   </div>
 
