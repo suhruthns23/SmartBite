@@ -10,13 +10,13 @@ async function findRecipes() {
   document.getElementById("results").innerHTML = "";
 
   try {
-    // Call Spoonacular API with your key
+    // Spoonacular API call with Indian cuisine filter
     const response = await fetch(
-      `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${encodeURIComponent(input)}&number=10&ranking=1&apiKey=67b40b86de8e475c8781175d2d1ac44a`
+      `https://api.spoonacular.com/recipes/complexSearch?cuisine=Indian&includeIngredients=${encodeURIComponent(input)}&number=10&apiKey=67b40b86de8e475c8781175d2d1ac44a`
     );
     const data = await response.json();
 
-    displayResults(data);
+    displayResults(data.results);
   } catch (err) {
     document.getElementById("results").innerHTML = "<p>Error fetching recipes 😕</p>";
   } finally {
